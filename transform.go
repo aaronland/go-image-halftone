@@ -4,7 +4,8 @@ import (
 	"context"
 	"github.com/aaronland/go-image-transform"
 	"image"
-	_ "net/url"
+	"net/url"
+	"strconv"
 )
 
 type HalftoneTransformation struct {
@@ -24,7 +25,33 @@ func init() {
 
 func NewHalftoneTransformation(ctx context.Context, str_url string) (transform.Transformation, error) {
 
+	parsed, err := url.Parse(str_url)
+
+	if err != nil {
+		return nil, err
+	}
+
 	opts := NewDefaultHalftoneOptions()
+
+	query := parsed.Query()
+
+	mode := query.Get("mode")
+	str_scale := query.Get("scale-factor")
+
+	if mode != "" {
+		opts.Mode = mode
+	}
+
+	if str_scale != "" {
+
+		scale, err := strconv.ParseFloat(str_scale, 64)
+
+		if err != nil {
+			return nil, err
+		}
+
+		opts.ScaleFactor = scale
+	}
 
 	tr := &HalftoneTransformation{
 		options: opts,
