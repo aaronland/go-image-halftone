@@ -4,18 +4,16 @@ import (
 	"context"
 	"log"
 
-	"github.com/aaronland/go-image-halftone/app/halftone"
-	_ "github.com/aaronland/go-image/common"
+	"github.com/aaronland/go-image-halftone/v2/app/halftone"
+	_ "github.com/aaronland/go-image/v2/common"
 )
 
 func main() {
 
 	ctx := context.Background()
-	logger := log.Default()
-
-	err := halftone.Run(ctx, logger)
+	err := halftone.Run(ctx)
 
 	if err != nil {
-		logger.Fatalf("Failed to halftone images, %v", err)
+		log.Fatalf("Failed to halftone images, %v", err)
 	}
 }

@@ -7,7 +7,7 @@ import (
 	"net/url"
 	"strconv"
 
-	"github.com/aaronland/go-image/transform"
+	"github.com/aaronland/go-image/v2/transform"
 )
 
 type HalftoneTransformation struct {
