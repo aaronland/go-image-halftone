@@ -2,6 +2,10 @@
 
 Go package implementing the `aaronland/go-image/v2/transform.Transformation` for interface halftone (dithering) processing of images.
 
+## Deprecation notice
+
+This package has been deprecated and will no longer be maintain. Its code and functionality have been merged with the [aaronland/go-image](https://github.com/aaronland/go-image) package.
+
 ## Documentation
 
 Documentation is incomplete at this time.
